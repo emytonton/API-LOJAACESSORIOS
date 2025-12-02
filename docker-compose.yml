@@ -1,0 +1,39 @@
+
+version: '3.8'
+
+services:
+  api-loja:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_HOST=postgres-db
+      - DB_USER=admin
+      - DB_PASS=senha123
+      - DB_NAME=loja_acessorios
+    depends_on:
+      - postgres-db
+    networks:
+      - loja-network
+
+  
+  postgres-db:
+    image: postgres:15-alpine
+    container_name: postgres_loja
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: senha123
+      POSTGRES_DB: loja_acessorios
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - loja-network
+
+networks:
+  loja-network:
+    driver: bridge
+
+volumes:
+  pgdata:

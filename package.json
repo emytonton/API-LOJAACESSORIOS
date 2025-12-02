@@ -1,0 +1,24 @@
+{
+  "name": "loja-acessorios-api",
+  "version": "1.0.0",
+  "main": "dist/infra/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/infra/server.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/infra/server.ts"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "pg": "^8.11.3",
+    "uuid": "^9.0.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.5.9",
+    "@types/pg": "^8.10.2",
+    "@types/uuid": "^9.0.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.2.2"
+  }
+}
