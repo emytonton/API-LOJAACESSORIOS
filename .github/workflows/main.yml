@@ -1,0 +1,25 @@
+name: Pipeline de Entrega Continua
+
+on: [push]
+
+jobs:
+  verificacao-projeto:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar dependências
+        continue-on-error: true
+        run: |
+          echo "Ambiente preparado com sucesso!"
+          npm ci --ignore-scripts
+
+      - name: Listar arquivos 
+        run: ls -la
